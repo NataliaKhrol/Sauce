@@ -10,6 +10,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.ProductsPage;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,8 @@ public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
+    String user;
+    String password;
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -35,6 +38,10 @@ public class BaseTest {
         context.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
+
+        System.setProperty("BASE_URL", PropertyReader.getProperty("sauce.url"));
+        user = PropertyReader.getProperty("sauce.user");
+        password = PropertyReader.getProperty("sauce.password");
     }
 
     @AfterMethod

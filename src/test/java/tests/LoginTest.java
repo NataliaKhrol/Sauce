@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
     @Test(description = "авторизация под верными данными")
     public void correctLogin() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         assertTrue(productsPage.isDisplayed(), "");
         assertEquals("Products", productsPage.getTitle());
     }
@@ -29,9 +29,9 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "blabla")
     public Object[][] loginData() {
         return new Object[][]{
-                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
-                {"standard_user", "", "Epic sadface: Password is required"},
-                {"", "secret_sauce", "Epic sadface: Username is required"}
+                {"locked_out_user", password, "Epic sadface: Sorry, this user has been locked out."},
+                {user, "", "Epic sadface: Password is required"},
+                {"", password, "Epic sadface: Username is required"}
         };
     }
 
