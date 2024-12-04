@@ -6,11 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    private final By USERNAME_INPUT = By.id("user-name");
-    private final By PAASWORD_INPUT = By.id("password");
-    private final By LOGIN_BUTTON = By.id("login-button");
-    private final By ERROR_MESSAGE = By.cssSelector("h3");
-
+    private static final By USERNAME_INPUT = By.id("user-name");
+    private static final By PASSWORD_INPUT = By.id("password");
+    private static final By LOGIN_BUTTON = By.id("login-button");
+    private final By errorMessage = By.cssSelector("h3");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,7 +32,7 @@ public class LoginPage extends BasePage {
     }
 
     public void fillPasswordInput(String password) {
-        driver.findElement(PAASWORD_INPUT).sendKeys(password);
+        driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
     public void clickSubmitBtn() {
@@ -42,6 +41,6 @@ public class LoginPage extends BasePage {
 
     @Step("Получаем текст из сообщения об ошибке")
     public String getErrorMessage() {
-        return driver.findElement(ERROR_MESSAGE).getText();
+        return driver.findElement(errorMessage).getText();
     }
 }
