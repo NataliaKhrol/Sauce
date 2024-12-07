@@ -44,3 +44,18 @@ public class LoginPage extends BasePage {
         return driver.findElement(errorMessage).getText();
     }
 }
+/*
+
+private static final By USERNAME_INPUT = By.id("user-name");
+private static String globalName = "Earth";
+private final By errorMessage = By.cssSelector("h3");
+private int age = 5;
+
+public LoginPage(WebDriver driver) {
+    super(driver);
+}
+
+@Step("Открытие браузера")
+public void open() {
+    driver.get(BASE_URL);
+}*/
